@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ChallengeViewDlg" widgetVar="ChallengeViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewChallengeTitle}">
+            <h:form id="ChallengeViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{challengeController.selected != null}">
+                        <h:outputText value="#{bundle.ViewChallengeLabel_id}"/>
+                        <h:outputText value="#{challengeController.selected.id}" title="#{bundle.ViewChallengeTitle_id}"/>
+                        <h:outputText value="#{bundle.ViewChallengeLabel_fromId}"/>
+                        <h:outputText value="#{challengeController.selected.fromId}" title="#{bundle.ViewChallengeTitle_fromId}"/>
+                        <h:outputText value="#{bundle.ViewChallengeLabel_toId}"/>
+                        <h:outputText value="#{challengeController.selected.toId}" title="#{bundle.ViewChallengeTitle_toId}"/>
+                        <h:outputText value="#{bundle.ViewChallengeLabel_causeId}"/>
+                        <h:outputText value="#{challengeController.selected.causeId}" title="#{bundle.ViewChallengeTitle_causeId}"/>
+                        <h:outputText value="#{bundle.ViewChallengeLabel_imageUrl}"/>
+                        <h:outputText value="#{challengeController.selected.imageUrl}" title="#{bundle.ViewChallengeTitle_imageUrl}"/>
+                        <h:outputText value="#{bundle.ViewChallengeLabel_videoUrl}"/>
+                        <h:outputText value="#{challengeController.selected.videoUrl}" title="#{bundle.ViewChallengeTitle_videoUrl}"/>
+                        <h:outputText value="#{bundle.ViewChallengeLabel_status}"/>
+                        <h:outputText value="#{challengeController.selected.status}" title="#{bundle.ViewChallengeTitle_status}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="ChallengeViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ChallengeCreateDlg" widgetVar="ChallengeCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateChallengeTitle}">
+            <h:form id="ChallengeCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{challengeController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateChallengeLabel_id}" for="id" />
+                        <p:inputText id="id" value="#{challengeController.selected.id}" title="#{bundle.CreateChallengeTitle_id}" required="true" requiredMessage="#{bundle.CreateChallengeRequiredMessage_id}"/>
+                        <p:outputLabel value="#{bundle.CreateChallengeLabel_fromId}" for="fromId" />
+                        <p:inputText id="fromId" value="#{challengeController.selected.fromId}" title="#{bundle.CreateChallengeTitle_fromId}" required="true" requiredMessage="#{bundle.CreateChallengeRequiredMessage_fromId}"/>
+                        <p:outputLabel value="#{bundle.CreateChallengeLabel_toId}" for="toId" />
+                        <p:inputText id="toId" value="#{challengeController.selected.toId}" title="#{bundle.CreateChallengeTitle_toId}" required="true" requiredMessage="#{bundle.CreateChallengeRequiredMessage_toId}"/>
+                        <p:outputLabel value="#{bundle.CreateChallengeLabel_causeId}" for="causeId" />
+                        <p:inputText id="causeId" value="#{challengeController.selected.causeId}" title="#{bundle.CreateChallengeTitle_causeId}" required="true" requiredMessage="#{bundle.CreateChallengeRequiredMessage_causeId}"/>
+                        <p:outputLabel value="#{bundle.CreateChallengeLabel_imageUrl}" for="imageUrl" />
+                        <p:inputText id="imageUrl" value="#{challengeController.selected.imageUrl}" title="#{bundle.CreateChallengeTitle_imageUrl}" />
+                        <p:outputLabel value="#{bundle.CreateChallengeLabel_videoUrl}" for="videoUrl" />
+                        <p:inputText id="videoUrl" value="#{challengeController.selected.videoUrl}" title="#{bundle.CreateChallengeTitle_videoUrl}" />
+                        <p:outputLabel value="#{bundle.CreateChallengeLabel_status}" for="status" />
+                        <p:inputText id="status" value="#{challengeController.selected.status}" title="#{bundle.CreateChallengeTitle_status}" required="true" requiredMessage="#{bundle.CreateChallengeRequiredMessage_status}"/>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{challengeController.create}" value="#{bundle.Save}" update="display,:ChallengeListForm:datalist,:growl" oncomplete="handleSubmit(args,'ChallengeCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="ChallengeCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>
